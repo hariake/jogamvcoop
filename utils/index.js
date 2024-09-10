@@ -13,4 +13,4 @@ app.use('/', articleRoutes);
 
 app.listen(3025, () =>{
     console.log('App is started at http://localhost:3025')
-});
+}); 
