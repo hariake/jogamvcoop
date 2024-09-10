@@ -5,13 +5,6 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json());
 
-app.use(sessions({
-    secret: "thisismysecretkey",
-    saveUninitialized: true,
-    cookie :{maxAge: 1000 * 60 * 60 * 24},
-    resave: false
-}))
-
 const articleControllerClass = require('./controllers/article');
 const articleController = new articleControllerClass()
 

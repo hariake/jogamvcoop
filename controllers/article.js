@@ -30,6 +30,23 @@ class articleController{
             article: {id: articleId, ...newArticle}  
         })
     } 
+
+    async updateArticle(req, res) {
+        const articleId  = req.params.findAll;  // Extract article ID from route parameters
+        const updatedArticle = {
+            name: req.body.name,
+            slug: req.body.slug,
+            image: req.body.image,
+            body: req.body.body,
+            published: req.body.published,
+            author_id: req.body.author_id
+        }
+        const result = await ArticleModel.update(articleId, updatedArticle)
+        res.status(200).json({
+            message: `updated article with id ${articleId}`,
+            article: {id: articleId, ...updatedArticle}
+        })
+    }  
 } 
 
    
