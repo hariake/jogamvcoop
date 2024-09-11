@@ -32,7 +32,7 @@ class articleController{
     } 
 
     async updateArticle(req, res) {
-        const articleId  = req.params.findAll;  // Extract article ID from route parameters
+        const articleId  = req.params.id;  // Extract article ID from route parameters
         const updatedArticle = {
             name: req.body.name,
             slug: req.body.slug,
@@ -47,6 +47,14 @@ class articleController{
             article: {id: articleId, ...updatedArticle}
         })
     }  
+
+    async deleteArticle(req, res) {
+        const articleId = req.params.id; 
+        await ArticleModel.delete(articleId)
+        res.status(200).json({
+            message: `deleted article ${articleId}`
+        })
+    }
 } 
 
    
