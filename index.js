@@ -6,17 +6,19 @@ const sessions = require('express-session')
 const path = require('path')
 const hbs = require('express-handlebars');
 
+const app = express()
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs.engine({
     extname: 'hbs',
     defaultLayout: 'main',
-    layoutsDir:__dirname + '/views/layouts'
+    layoutsDir:__dirname + '/views/layouts/'
 }))
 
 app.use(express.static('public'));
 
-const app = express()
+
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json());
 
