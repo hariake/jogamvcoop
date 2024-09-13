@@ -2,6 +2,18 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const sessions = require('express-session')
 
+
+const path = require('path')
+const hbs = require('express-handlebars');
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.engine('hbs', hbs.engine({
+    extname: 'hbs',
+    defaultLayout: 'main',
+    layoutsDir:__dirname + '/views/layouts'
+}))
+
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json());
