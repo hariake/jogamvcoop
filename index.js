@@ -14,6 +14,8 @@ app.engine('hbs', hbs.engine({
     layoutsDir:__dirname + '/views/layouts'
 }))
 
+app.use(express.static('public'));
+
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json());
